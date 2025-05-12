@@ -1,0 +1,31 @@
+{
+  "name": "bigo_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AK-shat-JAIN/big0_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AK-shat-JAIN/big0_backend/issues"
+  },
+  "homepage": "https://github.com/AK-shat-JAIN/big0_backend#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "email-validator": "^2.0.4",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.2",
+    "nodemon": "^3.1.10"
+  }
+}
