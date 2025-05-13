@@ -15,7 +15,7 @@ const cookieOptions = {
 }
 
 const register = async (req, res, next) => {
-    const { fullName, phone, email, password, role, profile, branch, todo} = req.body
+    const { fullName, phone, email, password, profile} = req.body
 
     if(!fullName || !email || !password){
         return next(new AppError('Please fill in all fields', 400))
@@ -35,10 +35,7 @@ const register = async (req, res, next) => {
             public_id: email,
             secure_id: '123'
         },
-        role,
-        profile,
-        branch,
-        todo
+        profile
     })
 
     if(!user){
@@ -160,7 +157,7 @@ const forgotPassword = async (req, res, next) => {
     const message = `You can reset your password by clicking <a href=${resetPasswordUrl} target="_blank">Reset your Password</a>\n or click on ${resetPasswordUrl}\n\n\nIf you have not requested this email, then ignore it.`
 
     try{
-        await sendEmail(email, subject, message)
+        // await sendEmail(email, subject, message)   //smtp---> env
 
         return res.status(200).json({
             success: true,

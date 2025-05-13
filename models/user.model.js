@@ -16,7 +16,7 @@ const userSchema = new Schema({
     },
     phone: {
         type: String,
-        required: [true, 'Please enter your phone number'],
+        // required: [true, 'Please enter your phone number'],
         trim: true,
         unique: true,
         match: [
@@ -49,10 +49,6 @@ const userSchema = new Schema({
             type: String,
         }
     },
-    role: {
-        type: String,
-        enum: ['ADMIN', 'MANAGER', 'EMPLOYEE']
-    },
     profile: {
         type: String,
         // required: [true, 'Please enter your profile'],
@@ -61,25 +57,21 @@ const userSchema = new Schema({
         minlength: [5, 'profile must be at least 5 characters long'],
         lowercase: true
     },
-    branch: {
-        type: String,
-        enum: ['MARKETING', 'ESTATE', 'MINING']
-    },
-    todo: [
-        {
-            title: String,
-            status: {
-                type: String,
-                enum: ['PENDING', 'COMPLETED'],
-                default: 'PENDING'
-            },
-            star : {
-                type: String,
-                enum: ['YES', 'NO'],
-                default: 'NO'
-            },
-        }
-    ],
+    // todo: [   // can be used as question model
+    //     {
+    //         title: String,
+    //         status: {
+    //             type: String,
+    //             enum: ['PENDING', 'COMPLETED'],
+    //             default: 'PENDING'
+    //         },
+    //         star : {
+    //             type: String,
+    //             enum: ['YES', 'NO'],
+    //             default: 'NO'
+    //         },
+    //     }
+    // ],
     forgortPasswordToken: String,
     forgortPasswordExpire: Date
 }, {
@@ -97,7 +89,7 @@ userSchema.pre('save', async function (next) {
 userSchema.methods = {
     getJwtToken: async function(){
         return await jwt.sign(
-            { id: this._id, email: this.email, role: this.role }, 
+            { id: this._id, email: this.email }, 
             process.env.JWT_SECRET, 
             { expiresIn: process.env.JWT_EXPIRY }
         )

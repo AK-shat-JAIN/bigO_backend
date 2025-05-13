@@ -10,8 +10,8 @@ router.post('/login', login);
 router.get('/logout', logout);
 router.get('/me', isLoggedin, profile);
 router.post('/forgot', forgotPassword);
-router.post('/reset/:token', resetPassword);
-router.post('/change-password', isLoggedin, changePassword);
+router.post('/reset/:token', resetPassword); //smtp---> env
+router.post('/change-password', isLoggedin, changePassword); //smtp---> env
 router.put('/update/:id', isLoggedin, upload.single('avatar'), updateUser);
 
 export default router;

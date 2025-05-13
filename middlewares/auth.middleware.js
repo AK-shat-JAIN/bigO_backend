@@ -16,15 +16,15 @@ const isLoggedin = async (req, res, next) => {
     }
 }
 
-const authorizedRoles = (...roles) => async (req, res, next) =>{        
-    const curresntUserRole = req.user.role
-    if(!roles.includes(curresntUserRole)){
-        return next(new AppError('You are not authorized to access this route', 403))
-    }
-    next()
-}
+// const authorizedRoles = (...roles) => async (req, res, next) =>{        
+//     const curresntUserRole = req.user.role
+//     if(!roles.includes(curresntUserRole)){
+//         return next(new AppError('You are not authorized to access this route', 403))
+//     }
+//     next()
+// }
 
 export {
     isLoggedin,
-    authorizedRoles
+    // authorizedRoles
 }
